@@ -1,0 +1,32 @@
+# The following types define the data model of the example service
+# based on which the GraphQL API is generated
+
+enum Difficulty {
+  EASY 
+  MODERATE
+  DIFFICULT 
+}
+
+type Trail @model {
+  id: ID! @isUnique    # read-only (managed by Graphcool)
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+  name: String!
+  location: String! @migrationValue(value: "Vernal, Utah")
+  difficulty: String! @migrationValue(value: "EASY")
+  length: Float! @migrationValue(value: 0.0)
+  description: String!
+  imageUrl: String!
+  latitude: Float!
+  longitude: Float!
+  high: Int! @migrationValue(value: 0)
+  low: Int! @migrationValue(value: 0)
+  
+}
+type User @model {
+  id: ID! @isUnique
+  name: String!
+  email: String!
+  password: String!  
+}
+
